@@ -1,39 +1,35 @@
-# Istanbul Atlas — Static GitHub Pages website
+# Istanbul Atlas · Static multi-page travel guide
 
-A responsive, build-free travel guide. Includes category filters, search, Google Maps links, favorites (saved in the current browser), a sample walking day, and transit tips.
+A responsive static website with clickable destination cards, deep-linkable detail views, shopping malls, outlet stores, markets, sights, metro/ferry advice, five trip ideas, browser-based favorites, and search.
 
-## Deploy to your existing GitHub Pages repository
+## Deploy on existing GitHub Pages repository
 
-1. Open https://github.com/zakariaemi/istanbul-travel-guide
-2. Select **Add file → Upload files** and upload the **index.html** file from this folder to the **repository root** (not into another folder). Replace any existing index.html, or edit it with the new contents.
-3. Commit to the branch used by your GitHub Pages workflow (usually `main`).
-4. Since your existing deployment uses a **Static HTML** GitHub Actions workflow, it should publish automatically after the commit.
-5. In the **Actions** tab, confirm the latest Pages deployment succeeded; then open https://zakariaemi.github.io/istanbul-travel-guide/.
+1. Download and unzip the project.
+2. In `https://github.com/zakariaemi/istanbul-travel-guide`, upload **index.html**, **style.css**, **data.js**, and **script.js** to the **repository root**, replacing previous files. Do not upload only `index.html`: it needs the other three files.
+3. Commit to `main`.
+4. If your GitHub Pages source is **GitHub Actions** with the **Static HTML** workflow, ensure it publishes the root directory (`.`) through `actions/upload-pages-artifact` and `actions/deploy-pages`. If it is already working, no workflow change is necessary.
+5. Check the Actions tab, then open `https://zakariaemi.github.io/istanbul-travel-guide/#/home`.
 
-If the repository does not yet have a Static HTML deployment workflow, go to **Settings → Pages**, select **GitHub Actions**, and configure the **Static HTML** starter workflow. Commit it to the default branch.
+No Node, npm, framework build, backend or external API keys are required.
 
-## Customize
+## URL routes
 
-Everything is inside `index.html` so it works without Node.js or a build step.
+- `#/home` homepage
+- `#/explore` searchable directory
+- `#/shopping` shopping directory
+- `#/place/istinye` destination detail
+- `#/transport` public transit
+- `#/planner` daily routes
+- `#/favorites` saved places
 
-- Update the `<title>`, hero copy and other HTML text.
-- Edit `const places = [...]` near the bottom of `index.html` to add or remove locations. Each location has `id`, `name`, `category`, `area`, `emoji`, `bg`, `desc`, `tags`, `source`, and `map`.
-- Keep ids unique and categories aligned with the `categories` array.
-- Favorites persist only in the visitor's browser via localStorage, not across devices.
-- The Google Fonts CDN and third-party map/source links require internet access; the main site otherwise runs without external assets.
+The old `#home` URL still opens the homepage, but navigation now uses `#/home` and `#/place/…` routes.
 
-## Important content note
+## Edit information
 
-The shared ChatGPT conversation at https://chatgpt.com/share/6af878a4-a868-83ea-894f-3499511ad465 did not expose its actual text to the available browser. This is therefore a **starter edition**, not a claim to have imported the user's full personal source material or PDF notes. The locations and generic summaries have been assembled from publicly accessible information. Opening hours and fares are intentionally omitted because they change. Review locations and links before relying on them.
+Edit `data.js` to update destination details, notes, brands or add a new destination. `script.js` generates separate navigable hash-route pages from the data. Detail pages are client-rendered (not separate HTML files), but have unique URLs and work on GitHub Pages without server-side routing.
 
-## Public source references
+Notes marked **Personal PDF** came from the user's historical 2024 personal reference documents. They are not verified current tenants or transport instructions. Other destination descriptions are curated general guidance. Check up-to-date official websites.
 
-- https://istinyepark.com.tr/en/
-- https://istinyepark.com.tr/en/stores
-- https://istanbul.ktb.gov.tr/
-- https://www.metro.istanbul/
-- https://sehirhatlari.istanbul/en
-- https://istanbul.travel/en/grand-bazaar?gruppe=basare
-- https://istanbul.travel/en/spice-bazaar?gruppe=basare
+The homepage image is loaded from an external tourism photography URL and may not load offline. All other visuals use CSS/emoji illustrations and work without image hosting.
 
-This is an independent guide and is not affiliated with the destinations above.
+Favorites use browser `localStorage`, remain on the same browser/device, and aren't synced across devices.

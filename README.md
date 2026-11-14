@@ -1,35 +1,26 @@
-# Istanbul Atlas · Static multi-page travel guide
+# Istanbul Atlas V3 — Public Istanbul visitor guide
 
-A responsive static website with clickable destination cards, deep-linkable detail views, shopping malls, outlet stores, markets, sights, metro/ferry advice, five trip ideas, browser-based favorites, and search.
+A responsive, free static website for **everyone**. No personal travel history or private preferences appear in the shipped application data, pages, or README.
 
-## Deploy on existing GitHub Pages repository
+## Features
+- 26 clickable destination cards with shareable `#/place/SLUG` URLs
+- Editorial photography for selected locations, graceful visual fallback for others
+- Seven sample day itineraries, shopping and brand suggestions, official transport links
+- Search and filters, browser-local favorites, mobile menu, transitions and scroll animations
+- Reduced-motion accessibility support
 
-1. Download and unzip the project.
-2. In `https://github.com/zakariaemi/istanbul-travel-guide`, upload **index.html**, **style.css**, **data.js**, and **script.js** to the **repository root**, replacing previous files. Do not upload only `index.html`: it needs the other three files.
-3. Commit to `main`.
-4. If your GitHub Pages source is **GitHub Actions** with the **Static HTML** workflow, ensure it publishes the root directory (`.`) through `actions/upload-pages-artifact` and `actions/deploy-pages`. If it is already working, no workflow change is necessary.
-5. Check the Actions tab, then open `https://zakariaemi.github.io/istanbul-travel-guide/#/home`.
+## Deploy to GitHub Pages
+1. Extract this zip.
+2. Replace these four files in the root of your `istanbul-travel-guide` repository: `index.html`, `style.css`, `data.js`, `script.js`.
+3. Commit to your `main` branch. Keep your existing working Static HTML GitHub Pages workflow.
+4. Visit `https://zakariaemi.github.io/istanbul-travel-guide/` and hard-refresh if your browser retains the old site.
 
-No Node, npm, framework build, backend or external API keys are required.
+## Accuracy and image notes
+- Store names are **examples of brands to look for**, not confirmed current tenants. Verify official directories.
+- Suggested routes are not live navigation; operators' current maps and timetables take priority.
+- Editorial photography is loaded from Unsplash; cards without imagery use a designed illustration.
+- Favorites use localStorage and do not sync between devices.
+- **Important privacy note:** replacing public site files does *not* erase older personal information from git history or previously published snapshots. If the old repository contains sensitive personal references, delete or rewrite history via a new clean repository and/or Git history cleanup before treating them as permanently removed.
 
-## URL routes
-
-- `#/home` homepage
-- `#/explore` searchable directory
-- `#/shopping` shopping directory
-- `#/place/istinye` destination detail
-- `#/transport` public transit
-- `#/planner` daily routes
-- `#/favorites` saved places
-
-The old `#home` URL still opens the homepage, but navigation now uses `#/home` and `#/place/…` routes.
-
-## Edit information
-
-Edit `data.js` to update destination details, notes, brands or add a new destination. `script.js` generates separate navigable hash-route pages from the data. Detail pages are client-rendered (not separate HTML files), but have unique URLs and work on GitHub Pages without server-side routing.
-
-Notes marked **Personal PDF** came from the user's historical 2024 personal reference documents. They are not verified current tenants or transport instructions. Other destination descriptions are curated general guidance. Check up-to-date official websites.
-
-The homepage image is loaded from an external tourism photography URL and may not load offline. All other visuals use CSS/emoji illustrations and work without image hosting.
-
-Favorites use browser `localStorage`, remain on the same browser/device, and aren't synced across devices.
+## Edit content
+Destinations are defined in `data.js`. UI routes and rendering are defined in `script.js`; visual styling is in `style.css`.

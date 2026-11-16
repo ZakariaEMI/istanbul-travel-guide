@@ -1,26 +1,44 @@
-# Istanbul Atlas V3 — Public Istanbul visitor guide
+# Istanbul Atlas V4 — Explore in Motion
 
-A responsive, free static website for **everyone**. No personal travel history or private preferences appear in the shipped application data, pages, or README.
+A public-facing static Istanbul travel guide, inspired by animated city-walk experiences. Free to use on GitHub Pages; **no npm, database or build required**.
+
+## Deploy to your existing GitHub Pages website
+
+1. Download the ZIP and extract it.
+2. In `https://github.com/zakariaemi/istanbul-travel-guide`, open **Code → Add file → Upload files**.
+3. Upload **`index.html`, `style.css`, `data.js`, `app.js`** to the root of the repository. Replace existing versions of these files if present.
+4. Commit to `main` and watch **Actions** for the Pages deployment.
+5. Open `https://zakariaemi.github.io/istanbul-travel-guide/#/home`.
+
+**Important:** `app.js` is new. The previous version's `script.js` is no longer used. Old GitHub commits can still contain previous personal notes; this update does not rewrite repository history.
 
 ## Features
-- 26 clickable destination cards with shareable `#/place/SLUG` URLs
-- Editorial photography for selected locations, graceful visual fallback for others
-- Seven sample day itineraries, shopping and brand suggestions, official transport links
-- Search and filters, browser-local favorites, mobile menu, transitions and scroll animations
-- Reduced-motion accessibility support
+- Dark responsive cinematic homepage
+- Three self-guided animated map walks with clickable numbered stops, next/previous and autoplay
+- Interactive Leaflet map using free CARTO dark tiles and OpenStreetMap attribution
+- Place directory: 34 clickable destinations with dedicated detail pages
+- Search by place, neighborhood or listed brands; category filters
+- Shopping mall and market directories with examples from the older user-supplied Istanbul PDF reference material (not live store availability)
+- Local favorites stored in browser localStorage only
+- Google Maps links for each stop / point-to-point walking legs
+- Accessible labels and reduced-motion support
 
-## Deploy to GitHub Pages
-1. Extract this zip.
-2. Replace these four files in the root of your `istanbul-travel-guide` repository: `index.html`, `style.css`, `data.js`, `script.js`.
-3. Commit to your `main` branch. Keep your existing working Static HTML GitHub Pages workflow.
-4. Visit `https://zakariaemi.github.io/istanbul-travel-guide/` and hard-refresh if your browser retains the old site.
+## Accuracy and public-content policy
 
-## Accuracy and image notes
-- Store names are **examples of brands to look for**, not confirmed current tenants. Verify official directories.
-- Suggested routes are not live navigation; operators' current maps and timetables take priority.
-- Editorial photography is loaded from Unsplash; cards without imagery use a designed illustration.
-- Favorites use localStorage and do not sync between devices.
-- **Important privacy note:** replacing public site files does *not* erase older personal information from git history or previously published snapshots. If the old repository contains sensitive personal references, delete or rewrite history via a new clean repository and/or Git history cleanup before treating them as permanently removed.
+- **Route lines are schematic** straight segments between destination markers — not actual pedestrian paths and not a live GPS map. Visitors must use Google Maps or official maps for walking directions. Do not claim route distances or step counts as measured.
+- Store directories reflect reference lists, **not confirmed current tenants**. Always verify the mall's official tenant directory.
+- The images are scenic Istanbul photographs used as visual atmosphere and **may not depict the exact place shown in each card**.
+- Third-party Leaflet, CARTO map tiles and Google Fonts need an internet connection.
+- Before publishing a commercial website, check the photo licenses and replace illustrative stock imagery with appropriately licensed, destination-specific photos.
+- All personally identifying notes, visit dates, contact details and private shopping comments have been excluded from public data.
 
-## Edit content
-Destinations are defined in `data.js`. UI routes and rendering are defined in `script.js`; visual styling is in `style.css`.
+## Content editing
+- `data.js` contains the curated places, place coordinates, photos, and three tours. Change or add destinations in the `window.PLACES` array; tours reference place `id` values.
+- `style.css` handles the layout, animation, typography and mobile breakpoints.
+- `app.js` handles navigation, filters, favorites, map interactions and stop animations.
+
+## Sources
+The place directories began from user-supplied reference PDFs (İstinyePark, Mall of Istanbul, Capacity, Optimum AVM, A Plus, Kanyon and other Istanbul shopping notes) and the previous public website's directory. Old notes were edited into public-facing material without personal visit histories.
+
+For transit verification: https://www.metro.istanbul/en/
+For ferry information: https://www.sehirhatlari.istanbul/en
